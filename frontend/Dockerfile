@@ -1,5 +1,5 @@
 # frontend/Dockerfile
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 
 # Instalar pnpm y dependencias para compilación nativa (si se necesitan)
 RUN apk add --no-cache python3 make g++ && npm i -g pnpm

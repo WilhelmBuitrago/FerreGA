@@ -1,0 +1,40 @@
+# Build contexts and caches
+node_modules
+dist
+build
+__pycache__
+*.pyc
+.pytest_cache
+.coverage
+htmlcov
+.mypy_cache
+.ruff_cache
+
+# Frontend (servido separadamente)
+frontend/
+
+# IDE and OS
+.vscode
+.idea
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
+*.log
+
+# Database local (Render provee PostgreSQL)
+data/
+*.db
+*.db-journal
+
+# Misc
+.git
+.gitignore
+.dockerignore
+docs/
+db/
+migrate_sqlite_to_postgres.py

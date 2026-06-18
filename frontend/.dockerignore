@@ -1,0 +1,16 @@
+node_modules
+dist
+.git
+.gitignore
+.env
+.env.*
+*.log
+.nyc_output
+coverage
+.vscode
+.idea
+*.md
+!README.md
+cypress
+cypress.config.ts
+src/test
