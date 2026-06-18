@@ -1,22 +1,24 @@
 # frontend/Dockerfile
 FROM node:20-alpine AS builder
 
-# Instalar pnpm y dependencias para compilación nativa (si se necesitan)
-RUN apk add --no-cache python3 make g++ && npm i -g pnpm
+# Instalar dependencias del sistema
+RUN apk add --no-cache python3 make g++
 
 WORKDIR /app
 
 # Copiar manifiestos de dependencias
-COPY package.json pnpm-lock.yaml* ./
+COPY package.json package-lock.json ./
 
-# Instalar dependencias (ignorar scripts de paquetes de dev como cypress/esbuild)
-RUN pnpm install --frozen-lockfile --ignore-scripts || pnpm install --ignore-scripts
+# Instalar dependencias con npm
+RUN npm install --no-audit --no-fund
 
-# Copiar código fuente explícitamente (evita problemas con .dockerignore)
+# Copiar código fuente explícitamente
 COPY vite.config.ts tsconfig.json index.html ./
 COPY src/ src/
 COPY public/ public/
-RUN pnpm build
+
+# Build
+RUN npm run build
 
 # Production stage
 FROM nginx:alpine
