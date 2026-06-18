@@ -12,8 +12,10 @@ COPY package.json pnpm-lock.yaml* ./
 # Instalar dependencias (ignorar scripts de paquetes de dev como cypress/esbuild)
 RUN pnpm install --frozen-lockfile --ignore-scripts || pnpm install --ignore-scripts
 
-# Copiar código fuente y construir
-COPY . .
+# Copiar código fuente explícitamente (evita problemas con .dockerignore)
+COPY vite.config.ts tsconfig.json index.html ./
+COPY src/ src/
+COPY public/ public/
 RUN pnpm build
 
 # Production stage
