@@ -9,8 +9,8 @@ WORKDIR /app
 # Copiar manifiestos de dependencias
 COPY package.json pnpm-lock.yaml* ./
 
-# Instalar dependencias con pnpm (intenta con lockfile, si no existe lo instala sin él)
-RUN pnpm install --frozen-lockfile || pnpm install
+# Instalar dependencias (ignorar scripts de paquetes de dev como cypress/esbuild)
+RUN pnpm install --frozen-lockfile --ignore-scripts || pnpm install --ignore-scripts
 
 # Copiar código fuente y construir
 COPY . .
