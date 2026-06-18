@@ -1,0 +1,22 @@
+# FastAPI y servidor
+fastapi
+uvicorn[standard]
+
+# Base de datos
+sqlalchemy
+psycopg2-binary
+
+# Validación y configuración
+pydantic
+python-dotenv
+
+# AI parser
+groq
+
+# Auth
+argon2-cffi
+
+# Para manejar formularios y archivos
+python-multipart
+
+requests
